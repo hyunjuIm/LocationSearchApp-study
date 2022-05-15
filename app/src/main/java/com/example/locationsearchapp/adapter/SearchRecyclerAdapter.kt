@@ -1,4 +1,4 @@
-package com.example.locationsearchapp
+package com.example.locationsearchapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ class SearchRecyclerAdapter(
     private var searchResultList: List<Any> = listOf()
 
     inner class SearchResultItemViewHolder(
-        val binding: ViewholderSearchResultItemBinding,
+        private val binding: ViewholderSearchResultItemBinding,
         val searchResultClickListener: (Any) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 

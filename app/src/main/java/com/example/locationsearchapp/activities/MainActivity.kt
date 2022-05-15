@@ -1,10 +1,11 @@
-package com.example.locationsearchapp
+package com.example.locationsearchapp.activities
 
 import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
+import com.example.locationsearchapp.adapter.SearchRecyclerAdapter
 import com.example.locationsearchapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
