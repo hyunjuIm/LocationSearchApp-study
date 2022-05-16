@@ -4,24 +4,25 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.locationsearchapp.databinding.ViewholderSearchResultItemBinding
+import com.example.locationsearchapp.model.SearchResultEntity
 
-class SearchRecyclerAdapter(
-    private val searchResultClickListener: (Any) -> Unit
-) : RecyclerView.Adapter<SearchRecyclerAdapter.SearchResultItemViewHolder>() {
+class SearchRecyclerAdapter :
+    RecyclerView.Adapter<SearchRecyclerAdapter.SearchResultItemViewHolder>() {
 
-    private var searchResultList: List<Any> = listOf()
+    private var searchResultList: List<SearchResultEntity> = listOf()
+    lateinit var searchResultClickListener: (SearchResultEntity) -> Unit
 
     inner class SearchResultItemViewHolder(
         private val binding: ViewholderSearchResultItemBinding,
-        val searchResultClickListener: (Any) -> Unit
+        val searchResultClickListener: (SearchResultEntity) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindData(data: Any) = with(binding) {
-            textTextView.text = "제목"
-            subtextTextView.text = "부제목"
+        fun bindData(data: SearchResultEntity) = with(binding) {
+            textTextView.text = data.name
+            subtextTextView.text = data.fullAddress
         }
 
-        fun bindView(data: Any) {
+        fun bindView(data: SearchResultEntity) {
             binding.root.setOnClickListener {
                 searchResultClickListener(data)
             }
@@ -39,10 +40,18 @@ class SearchRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchResultItemViewHolder, position: Int) {
-        holder.bindData(Any())
-        holder.bindView(Any())
+        holder.bindData(searchResultList[position])
+        holder.bindView(searchResultList[position])
     }
 
-    override fun getItemCount(): Int = 10
+    override fun getItemCount(): Int = searchResultList.size
+
+    fun setSearchResultList(
+        searchResultList: List<SearchResultEntity>,
+        searchResultClickListener: (SearchResultEntity) -> Unit
+    ) {
+        this.searchResultList = searchResultList
+        this.searchResultClickListener = searchResultClickListener
+    }
 
 }

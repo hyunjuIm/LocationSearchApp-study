@@ -7,6 +7,8 @@ import android.util.Log
 import androidx.core.view.isVisible
 import com.example.locationsearchapp.adapter.SearchRecyclerAdapter
 import com.example.locationsearchapp.databinding.ActivityMainBinding
+import com.example.locationsearchapp.model.LocationLatLngEntity
+import com.example.locationsearchapp.model.SearchResultEntity
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         initAdapter()
         initView()
+        initData()
+
+        setData()
     }
 
     private fun initView() = with(binding) {
@@ -28,8 +33,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        searchRecyclerAdapter = SearchRecyclerAdapter{
-            Log.d(TAG, "initAdapter: 클릭됨")
+        searchRecyclerAdapter = SearchRecyclerAdapter()
+    }
+
+    private fun initData() {
+        searchRecyclerAdapter.notifyDataSetChanged()
+    }
+
+    private fun setData() {
+        val dataList = (0..10).map {
+            SearchResultEntity(
+                name = "빌딩 $it",
+                fullAddress = "주소 $it",
+                locationLatLng = LocationLatLngEntity(
+                    it.toFloat(),
+                    it.toFloat()
+                )
+            )
+        }
+        searchRecyclerAdapter.setSearchResultList(dataList) {
+            Log.d(TAG, "setData: $dataList")
         }
     }
 }
