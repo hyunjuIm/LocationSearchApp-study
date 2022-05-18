@@ -52,6 +52,7 @@ class SearchRecyclerAdapter :
     ) {
         this.searchResultList = searchResultList
         this.searchResultClickListener = searchResultClickListener
+        notifyDataSetChanged()
     }
 
 }
