@@ -1,7 +1,7 @@
 package com.example.locationsearchapp.utility
 
-import com.example.locationsearchapp.Key
-import com.example.locationsearchapp.Url
+import com.example.locationsearchapp.resource.Key
+import com.example.locationsearchapp.resource.Url
 import com.example.locationsearchapp.response.search.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET

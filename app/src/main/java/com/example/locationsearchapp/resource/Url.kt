@@ -1,4 +1,4 @@
-package com.example.locationsearchapp
+package com.example.locationsearchapp.resource
 
 object Url {
     const val TMAP_URL = "https://apis.openapi.sk.com"

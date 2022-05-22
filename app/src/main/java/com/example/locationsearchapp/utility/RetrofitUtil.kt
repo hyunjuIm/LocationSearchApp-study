@@ -1,7 +1,7 @@
 package com.example.locationsearchapp.utility
 
 import com.example.locationsearchapp.BuildConfig
-import com.example.locationsearchapp.Url
+import com.example.locationsearchapp.resource.Url
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
