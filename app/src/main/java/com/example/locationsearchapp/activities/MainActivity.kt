@@ -1,10 +1,12 @@
 package com.example.locationsearchapp.activities
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
+import com.example.locationsearchapp.activities.MapActivity.Companion.SEARCH_RESULT_EXTRA_KEY
 import com.example.locationsearchapp.adapter.SearchRecyclerAdapter
 import com.example.locationsearchapp.databinding.ActivityMainBinding
 import com.example.locationsearchapp.model.LocationLatLngEntity
@@ -70,6 +72,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             )
         }
         searchRecyclerAdapter.setSearchResultList(dataList) {
+            val intent = Intent(this, MapActivity::class.java).apply {
+                putExtra(SEARCH_RESULT_EXTRA_KEY, it)
+            }
+            startActivity(intent)
             Log.d(TAG, "setData: $dataList")
         }
     }
